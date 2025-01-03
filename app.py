@@ -176,17 +176,25 @@ class MOSApp:
                 id_display = gr.Markdown()
             
             gr.Markdown("------")
-            gr.Markdown("## 根据您听到的音频回答以下问题")
-            score_description = gr.Markdown("""
-                ### 1. 请从自然度、清晰度和发音准确度方面评价语音的整体质量
-                | 分数 | 自然度/人声相似度 | 机器音特征 |
-                |-------|---------------------|-------------|
-                | 5 优秀 | 完全自然的语音 | 无法察觉机器音特征 |
-                | 4 良好 | 大部分自然的语音 | 可以察觉但不影响听感 |
-                | 3 一般 | 自然与不自然程度相当 | 明显可察觉且略有影响 |
-                | 2 较差 | 大部分不自然的语音 | 令人不适但尚可接受 |
-                | 1 很差 | 完全不自然的语音 | 非常明显且无法接受 |
-                """)
+            gr.Markdown("## 请根据以下标准为音频打分")
+            with gr.Row():
+                with gr.Column(scale=1):
+                    score_description = gr.Markdown("""
+                        ### 请从自然度、清晰度和发音准确度方面评价语音的整体质量
+                        | 分数 | 自然度/人声相似度 | 机器音特征 |
+                        |-------|---------------------|-------------|
+                        | 5 优秀 | 完全自然的语音 | 无法察觉机器音特征 |
+                        | 4 良好 | 大部分自然的语音 | 可以察觉但不影响听感 |
+                        | 3 一般 | 自然与不自然程度相当 | 明显可察觉且略有影响 |
+                        | 2 较差 | 大部分不自然的语音 | 令人不适但尚可接受 |
+                        | 1 很差 | 完全不自然的语音 | 非常明显且无法接受 |
+                        """)
+                with gr.Column(scale=2):
+                    gr.Markdown("### 评分参考示例")
+                    with gr.Row():
+                        gr.Audio("examples/score5.wav", label="5分示例", scale=1)
+                        gr.Audio("examples/score3.wav", label="3分示例", scale=1)
+                        gr.Audio("examples/score1.wav", label="1分示例", scale=1)
             gr.Markdown("------")
             gr.Markdown("## 请仔细听以下prompt音频：")
             with gr.Row():
