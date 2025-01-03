@@ -2,7 +2,7 @@
 
 [English](./readme_en.md) | [中文](./readme.md)
 
-A simple single-file TTS (Text-to-Speech) MOS (Mean Opinion Score) evaluation system.
+A simple single-file MOS (Mean Opinion Score) evaluation system for TTS (Text-to-Speech), VC (Voice Conversion)... model evaluation.
 
 ## Features
 
