@@ -26,3 +26,6 @@ var/
 
 # 其他
 app_naive.py
+
+# 忽略状态文件
+states/

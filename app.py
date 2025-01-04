@@ -98,6 +98,7 @@ class MOSApp:
             state["selected_MOS"][folder].append(options[i])
 
         state["index"] += 1
+        self.save_state(state)  # 保存更新后的状态
         
         if state["index"] < len(self.prompt_files):
             next_audios = self.audio_order[state["index"]]
@@ -124,7 +125,7 @@ class MOSApp:
             
             return (
                 *([None] * (1 + len(self.model_folders))),
-                "## 感谢您的反馈！测评结束",
+                "## 感谢您的反馈！您的测评数据已保存",
                 *([0.5] * len(self.model_folders)),
                 state
             )
@@ -136,6 +137,19 @@ class MOSApp:
                 state, 
                 *([None] * (1 + len(self.model_folders))),
                 ""
+            )
+        
+        # 检查是否有保存的状态
+        saved_state = self.load_state(id)
+        if saved_state:
+            state.update(saved_state)
+            current_audios = self.audio_order[state["index"]]
+            return (
+                f"## 您的ID: {state['tester_id']}（已恢复之前的进度）", 
+                state, 
+                *(audio[0] for audio in current_audios),
+                self.prompt_files[state["index"]],
+                f"#### 您正在评价第 {state['index']+1} 组音频，共 {str(len(self.prompt_files))} 个。提交后请向上滚动收听新的音频"
             )
         
         if id in self.used_ids:
@@ -152,8 +166,10 @@ class MOSApp:
         state["index"] = 0
         self.used_ids.add(id)
         
+        # 保存初始状态
+        self.save_state(state)
+        
         first_audios = self.audio_order[0]
-
         return (
             f"## 您的ID: {state['tester_id']}", 
             state, 
@@ -270,6 +286,29 @@ class MOSApp:
             <div>5 优秀</div>
         </div>
         """
+
+    def save_state(self, state):
+        """保存当前状态到本地文件"""
+        state_file = f"states/{state['tester_id']}.json"
+        os.makedirs('states', exist_ok=True)
+        
+        with open(state_file, 'w') as f:
+            import json
+            json.dump({
+                'index': state['index'],
+                'selected_MOS': state['selected_MOS'],
+                'tester_id': state['tester_id']
+            }, f)
+
+    def load_state(self, tester_id):
+        """从本地文件加载状态"""
+        state_file = f"states/{tester_id}.json"
+        if os.path.exists(state_file):
+            with open(state_file, 'r') as f:
+                import json
+                saved_state = json.load(f)
+                return saved_state
+        return None
 
 if __name__ == "__main__":
     app = MOSApp()
