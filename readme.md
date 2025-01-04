@@ -55,3 +55,6 @@ rer,fish,1,1.5,2
 rer,30w,2.5,2,4.5
 rer,100w,1.5,3.5,4
 ```
+
+# Reference
+- https://github.com/coqui-ai/TTS/discussions/482#discussioncomment-10772959
