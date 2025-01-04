@@ -14,7 +14,7 @@ class MOSApp:
         self.prompt_floder = "prompt"
         
         # 动态检测模型文件夹
-        model_folders = [folder for folder in os.listdir('.') if os.path.isdir(folder) and folder != self.prompt_floder and not folder.startswith(".")]
+        model_folders = [folder for folder in os.listdir('.') if os.path.isdir(folder) and folder != self.prompt_floder and not folder.startswith(".") and not folder == "assets"]
         self.model_folders = sorted(model_folders)
         
         # 获取每个模型文件夹下的音频文件
@@ -166,7 +166,7 @@ class MOSApp:
         with gr.Blocks() as demo:
             state = gr.State(self.initialize_state())
 
-            gr.Markdown("# TTS MOS Survey System")
+            gr.Markdown("# TTS MOS Easy Survey")
 
             gr.Markdown("## 首先请输入您的测试者ID")
             
@@ -192,9 +192,9 @@ class MOSApp:
                 with gr.Column(scale=2):
                     gr.Markdown("### 评分参考示例")
                     with gr.Row():
-                        gr.Audio("examples/score5.wav", label="5分示例", scale=1)
-                        gr.Audio("examples/score3.wav", label="3分示例", scale=1)
-                        gr.Audio("examples/score1.wav", label="1分示例", scale=1)
+                        gr.Audio("assets/example_mos5.wav", label="5分示例", scale=1)
+                        gr.Audio("assets/example_mos3.wav", label="3分示例", scale=1)
+                        gr.Audio("assets/example_mos1.wav", label="1分示例", scale=1)
             gr.Markdown("------")
             gr.Markdown("## 请仔细听以下prompt音频：")
             with gr.Row():

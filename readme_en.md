@@ -2,12 +2,14 @@
 
 [English](./readme_en.md) | [中文](./readme.md)
 
-A simple single-file MOS (Mean Opinion Score) evaluation system for TTS (Text-to-Speech), VC (Voice Conversion)... model evaluation.
+A simple single-file MOS (Mean Opinion Score) evaluation system based on Gradio for TTS (Text-to-Speech), VC (Voice Conversion)... model evaluation.
+
+![demo](assets/demo.png)
 
 ## Features
 
 - Single code file
-- Support for comparing multiple TTS models
+- Support for comparing between several TTS models
 - Automatic randomization of audio playback order
 - Prevention of duplicate submissions
 - Results automatically saved in CSV format
