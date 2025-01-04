@@ -13,7 +13,7 @@ A simple single-file MOS (Mean Opinion Score) evaluation system based on Gradio 
 - Support for comparing between several TTS models
 - Automatic randomization of audio playback order
 - Prevention of duplicate submissions
-- User can restore last evaluation progress
+- User can restore last evaluation progress (progress saved in `states/` directory)
 - Results automatically saved in CSV format
 - Clean web interface
 
@@ -25,7 +25,7 @@ pip install -r requirements.txt
 ```
 2. Prepare audio files:
    - Place reference audio files in the `examples/prompt/` directory
-   - Create subdirectories for each model in `examples/`, place corresponding synthesized audio files, directory names should match model names
+   - Create subdirectories for each model in `examples/models_results/`, place corresponding synthesized audio files, directory names should match model names
    - Model folder names will be recorded in result.csv
    - Ensure all model folders contain the same number of audio files as reference audio
    - Ensure consistent file naming order in all folders, system will sort automatically: 1.wav, 2.wav, 3.wav, ...
