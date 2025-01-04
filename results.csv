@@ -53,3 +53,6 @@ rer,100w,1.5,3.5,4,4.5,4,3.5,4
 zk,100w,1.5,2.5,2.5
 zk,30w,1,1,1.5
 zk,fish,1.5,2,2.5
+11,./models_results/100w,1.5,2,1
+11,./models_results/30w,1.5,2,1
+11,./models_results/fish,1.5,2,1

@@ -2,7 +2,7 @@
 
 [English](./readme_en.md) | 中文
 
-一个单文件的简单易用基于Gradio的 MOS (平均意见得分) 评测系统,适用于TTS（文本转语音），VC（语言转换）等模型评估。
+一个基于Gradio的单文件简单易用 MOS (平均意见得分) 评测系统,适用于TTS（文本转语音），VC（语言转换）等模型评估。
 
 ## Demo
 ![demo](assets/demo.png)
