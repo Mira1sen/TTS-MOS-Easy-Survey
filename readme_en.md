@@ -13,6 +13,7 @@ A simple single-file MOS (Mean Opinion Score) evaluation system based on Gradio 
 - Support for comparing between several TTS models
 - Automatic randomization of audio playback order
 - Prevention of duplicate submissions
+- User can restore last evaluation progress
 - Results automatically saved in CSV format
 - Clean web interface
 
