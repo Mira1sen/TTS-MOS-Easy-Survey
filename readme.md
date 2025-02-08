@@ -34,12 +34,18 @@ pip install -r requirements.txt
    - Ensure consistent file naming order in all folders, system will sort automatically: 1.wav, 2.wav, 3.wav, ...
 
 3. Run the evaluation system:
+## Run 0~5 point quality scoring system
 ```bash
-python app.py
+python app_dbfs.py
+```
+## Run -3~3 point comparison scoring system
+```bash
+python app_compare.py
 ```
 4. Visit `http://localhost:8565` in your browser to start evaluation
 
 ## Scoring Criteria
+### Quality Scoring
 1-5 points, with 0.5 point intervals
 | Score | Naturalness/Human Similarity | Machine Characteristics |
 |-------|----------------------------|------------------------|
@@ -48,6 +54,18 @@ python app.py
 | 3 Fair | Equal natural and unnatural qualities | Clearly detectable with slight impact |
 | 2 Poor | Mostly unnatural speech | Uncomfortable but still acceptable |
 | 1 Bad | Completely unnatural speech | Very obvious and unacceptable |
+
+### Comparison Scoring
+-3~3 points, with 1 point intervals
+| Score | Description |
+|-------|-------------|
+| 3 | Significantly better than reference audio |
+| 2 | Better than reference audio |
+| 1 | Slightly better than reference audio |
+| 0 | Similar to reference audio |
+| -1 | Slightly worse than reference audio |
+| -2 | Worse than reference audio |
+| -3 | Significantly worse than reference audio |
 
 ## Results Storage
 
